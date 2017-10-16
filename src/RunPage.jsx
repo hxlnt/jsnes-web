@@ -14,6 +14,7 @@ function loadBinary(path, callback) {
   var req = new XMLHttpRequest();
   req.open("GET", path);
   req.overrideMimeType("text/plain; charset=x-user-defined");
+  
   req.onload = function() {
     if (this.status === 200) {
       callback(null, this.responseText);
@@ -174,10 +175,11 @@ class RunPage extends Component {
 
   load = () => {
     if (this.props.match.params.rom) {
-      const path = config.BASE_ROM_URL + this.props.match.params.rom;
+      const path = config.BASE_ROM_URL;
       loadBinary(path, (err, data) => {
         if (err) {
           window.alert(`Error loading ROM: ${err.toString()}`);
+          console.log(err);
         } else {
           this.handleLoaded(data);
         }

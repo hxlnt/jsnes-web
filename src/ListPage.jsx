@@ -42,6 +42,7 @@ class ListPage extends Component {
         className="container ListPage my-4"
         onDragOver={this.handleDragOver}
         onDrop={this.handleDrop}
+        onClick={this.handleClick}
       >
         <div className="row justify-content-center">
           <div className="col-md-8">
@@ -87,6 +88,12 @@ class ListPage extends Component {
     }
     this.props.history.push({ pathname: "/run", state: { file: file } });
   };
+
+  handleClick = e => {
+    e.preventDefault();
+    let file;
+
+  }
 }
 
 export default ListPage;
